@@ -16,7 +16,7 @@ const unfoldedFingers = [
   Finger.Pinky,
 ];
 // Thumb
-openedGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 0.75);
+openedGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1.0);
 openedGesture.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 0.0);
 openedGesture.addCurl(Finger.Thumb, FingerCurl.FullCurl, 0.0);
 openedGesture.addDirection(Finger.Thumb, FingerDirection.VerticalUp, 1.0);
@@ -33,7 +33,7 @@ openedGesture.addDirection(
 );
 
 for (let finger of unfoldedFingers) {
-  openedGesture.addCurl(finger, FingerCurl.NoCurl, 0.70);
+  openedGesture.addCurl(finger, FingerCurl.NoCurl, 0.7);
   openedGesture.addCurl(finger, FingerCurl.HalfCurl, 0.0);
   openedGesture.addCurl(finger, FingerCurl.FullCurl, 0.0);
   openedGesture.addDirection(finger, FingerDirection.VerticalUp, 1.0);
