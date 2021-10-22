@@ -13,7 +13,7 @@ const MusicCanvas: React.FC<ImusicCanvas> = ({ blob }) => {
     if (scene) {
       scene.play(blob);
     }
-  }, [blob]);
+  }, [blob, scene]);
   return <canvas id="scene" ref={refScene}></canvas>;
 };
 export default MusicCanvas;

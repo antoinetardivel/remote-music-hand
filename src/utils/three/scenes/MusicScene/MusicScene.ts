@@ -172,7 +172,7 @@ export default class MusicScene {
     // controls.maxDistance = 200.0;
     controls.enableDamping = true;
     controls.target.set(-73, 54, 75);
-    //controls.enabled = false;
+    controls.enabled = false;
     return controls;
   }
 
