@@ -159,7 +159,7 @@ export default class MusicScene {
       1,
       20000
     );
-    camera.position.set(-468, 178, 1329);
+    camera.position.set(-274, 164, 1046);
     return camera;
   }
   initControls() {
@@ -171,8 +171,8 @@ export default class MusicScene {
     // controls.minDistance = 40.0;
     // controls.maxDistance = 200.0;
     controls.enableDamping = true;
-    controls.target.set(139, -32, 133);
-    controls.enabled = false;
+    controls.target.set(-73, 54, 75);
+    //controls.enabled = false;
     return controls;
   }
 
@@ -183,7 +183,6 @@ export default class MusicScene {
 
   onWindowResize() {
     this.updateCamera();
-
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   }

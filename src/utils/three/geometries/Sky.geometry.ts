@@ -26,7 +26,7 @@ class SkyGeometry {
     this.uniforms["mieDirectionalG"].value = 0.8;
     this.parameters = {
       elevation: 2.5,
-      azimuth: 110,
+      azimuth: 170,
     };
     this.sun = new THREE.Vector3();
     this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);
