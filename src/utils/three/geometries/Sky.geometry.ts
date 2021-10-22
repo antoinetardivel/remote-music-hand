@@ -25,8 +25,8 @@ class SkyGeometry {
     this.uniforms["mieCoefficient"].value = 0.005;
     this.uniforms["mieDirectionalG"].value = 0.8;
     this.parameters = {
-      elevation: 2,
-      azimuth: 180,
+      elevation: 2.5,
+      azimuth: 110,
     };
     this.sun = new THREE.Vector3();
     this.pmremGenerator = new THREE.PMREMGenerator(this.renderer);

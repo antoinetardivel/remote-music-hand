@@ -4,6 +4,8 @@ import "@tensorflow/tfjs-backend-webgl";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import "./HandDetection.css";
+import iconMute from "../../assets/icons/volume-mute.svg";
+import iconSoundOn from "../../assets/icons/volume-on.svg";
 
 import * as fp from "fingerpose";
 import { drawHand } from "../../utils/drawHand";
@@ -19,8 +21,14 @@ import { config } from "../../config/config";
 
 interface IhandDetection {
   setPosition: (position: string) => void;
+  setMuted: (state: boolean) => void;
+  muted: boolean;
 }
-const HandDetection: React.FC<IhandDetection> = ({ setPosition }) => {
+const HandDetection: React.FC<IhandDetection> = ({
+  setPosition,
+  muted,
+  setMuted,
+}) => {
   const webcamRef = useRef(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [textPosition, setTextPosition] = useState<string>();
@@ -85,7 +93,6 @@ const HandDetection: React.FC<IhandDetection> = ({ setPosition }) => {
     };
     const runHandpose = async (webcamRef: React.MutableRefObject<any>) => {
       const net = await handpose.load();
-      console.log("Handpose model loaded.");
       //  Loop and detect hands
       setInterval(() => {
         detect(net, webcamRef);
@@ -97,36 +104,48 @@ const HandDetection: React.FC<IhandDetection> = ({ setPosition }) => {
   }, [webcamRef, setPosition]);
 
   return (
-    <div
-      className="videoContainer"
-      style={{ height: config.video.height, width: config.video.width }}
-    >
-      <Webcam
-        ref={webcamRef}
-        className="video"
-        style={{
-          width: config.video.width,
-          height: config.video.height,
-        }}
-      />
-
-      <canvas
-        ref={canvasRef}
-        className="handCanvas"
-        style={{
-          width: config.video.width,
-          height: config.video.height,
-        }}
-      />
+    <div className="handDetection">
       <div
-        className="textPositionContainer"
-        style={{
-          width: config.video.width,
-          height: config.video.height,
-        }}
+        className="videoContainer"
+        style={{ height: config.video.height, width: "200px" }}
       >
-        <p className="textPosition">{textPosition}</p>
+        <Webcam
+          ref={webcamRef}
+          className="video"
+          style={{
+            width: config.video.width,
+            height: config.video.height,
+          }}
+        />
+
+        <canvas
+          ref={canvasRef}
+          className="handCanvas"
+          style={{
+            width: config.video.width,
+            height: config.video.height,
+          }}
+        />
+        <div
+          className="textPositionContainer"
+          style={{
+            width: config.video.width,
+            height: config.video.height,
+          }}
+        >
+          <p className="textPosition">
+            {textPosition === "closed"
+              ? "mute"
+              : textPosition === "opened"
+              ? "no notes"
+              : config.notes.filter((note) => note.name === textPosition)[0]
+                  ?.text}
+          </p>
+        </div>
       </div>
+      <button className="muteButton" onClick={() => setMuted(!muted)}>
+        <img src={muted ? iconMute : iconSoundOn} alt="Mute button" />
+      </button>
     </div>
   );
 };

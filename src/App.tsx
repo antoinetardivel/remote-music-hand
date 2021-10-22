@@ -8,21 +8,35 @@ import MusicCanvas from "./components/MusicCanvas/MusicCanvas.component";
 
 const App: React.FC = () => {
   const [position, setPosition] = useState<string | null>(null);
+  const [muted, setMuted] = useState<boolean>(false);
   const [positionDebouced] = useDebounce(position, 300);
+  const [blob, setBlob] = useState<number>(0);
   const [oscillator, setOscillator] = useState<Oscillator | null>(null);
 
   useEffect(() => {
-    if (positionDebouced === "opened" || positionDebouced === "closed") {
-      oscillator?.mute(0.0);
-    } else {
-      for (let i = 0; i < config.notes.length; i++) {
-        if (config.notes[i].name === positionDebouced) {
-          oscillator?.setFrequency(config.notes[i].frequency);
-          oscillator?.setSound(1.0);
+    if (oscillator) {
+      if (!muted) {
+        if (positionDebouced === "closed") {
+          oscillator.mute();
+          setBlob(0);
+          setMuted(true);
+        } else if (positionDebouced === "opened") {
+          oscillator.mute();
+          setBlob(0);
+        } else {
+          for (let i = 0; i < config.notes.length; i++) {
+            if (config.notes[i].name === positionDebouced) {
+              oscillator.setFrequency(config.notes[i].frequency);
+              setBlob(config.notes[i].number);
+              oscillator.setSound();
+            }
+          }
         }
+      } else {
+        oscillator.mute();
       }
     }
-  }, [positionDebouced, oscillator]);
+  }, [positionDebouced, oscillator, muted]);
 
   useEffect(() => {
     const newAudioContext = new (window.AudioContext ||
@@ -32,8 +46,12 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <MusicCanvas />
-      <HandDetection setPosition={setPosition} />
+      <MusicCanvas blob={blob} />
+      <HandDetection
+        setPosition={setPosition}
+        setMuted={setMuted}
+        muted={muted}
+      />
     </div>
   );
 };

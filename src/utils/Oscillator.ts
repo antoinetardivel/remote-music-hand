@@ -5,7 +5,7 @@ export class Oscillator {
   public type;
   // frequency in Hertz
   public frequency;
-  public gain;
+  public ampli;
   public audioCtx;
   constructor(type: TOscillatorType, frequency: number, ctx: any) {
     this.type = type;
@@ -17,9 +17,9 @@ export class Oscillator {
       this.frequency,
       this.audioCtx.currentTime
     );
-    this.gain = this.audioCtx.createGain();
-    this.oscillator.connect(this.gain);
-    this.oscillator.connect(this.audioCtx.destination);
+    this.ampli = this.audioCtx.createGain();
+    this.oscillator.connect(this.ampli);
+    this.ampli.connect(this.audioCtx.destination);
     this.oscillator.start();
   }
   setType(type: TOscillatorType) {
@@ -34,22 +34,25 @@ export class Oscillator {
     );
   }
 
-  setSound(newGain: number) {
-    this.gain.gain.setValueAtTime(
-      this.gain.gain.value,
+  setSound() {
+    this.ampli.gain.setValueAtTime(
+      this.ampli.gain.value,
       this.audioCtx.currentTime
     );
-    this.gain.gain.linearRampToValueAtTime(
-      newGain,
+    this.ampli.gain.linearRampToValueAtTime(
+      1,
       this.audioCtx.currentTime + 1 * 0.3
     );
   }
-  mute(newGain: number) {
-    this.gain.gain.setValueAtTime(
-      this.gain.gain.value,
+  mute() {
+    this.ampli.gain.setValueAtTime(
+      this.ampli.gain.value,
       this.audioCtx.currentTime
     );
-    this.gain.gain.linearRampToValueAtTime(0, this.audioCtx.currentTime + 2);
+    this.ampli.gain.linearRampToValueAtTime(
+      0,
+      this.audioCtx.currentTime + 1 * 0.3
+    );
   }
 
   stop() {
