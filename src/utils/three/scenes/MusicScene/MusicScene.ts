@@ -154,12 +154,12 @@ export default class MusicScene {
 
   initCamera() {
     const camera = new THREE.PerspectiveCamera(
-      55,
+      this.defineFov(),
       window.innerWidth / window.innerHeight,
       1,
       20000
     );
-    camera.position.set(-274, 164, 1046);
+    camera.position.set(-254, 153, 951);
     return camera;
   }
   initControls() {
@@ -177,8 +177,23 @@ export default class MusicScene {
   }
 
   updateCamera() {
+    this.camera.fov = this.defineFov();
     this.camera.updateProjectionMatrix();
     this.camera.aspect = window.innerWidth / window.innerHeight;
+  }
+  defineFov() {
+    if (window.innerWidth <= 360) {
+      console.log(45);
+      return 45;
+    } else if (window.innerWidth >= 1920) {
+      console.log(104);
+      return 104;
+    } else {
+      const pourcentWidht = ((window.innerWidth - 360) * 100) / 1920;
+      const deltaFov = ((100 - pourcentWidht) * (104 - 45)) / 100;
+      console.log(45 + deltaFov);
+      return 45 + deltaFov;
+    }
   }
 
   onWindowResize() {

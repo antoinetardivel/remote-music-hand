@@ -1,5 +1,3 @@
-// import tiles from "../../../assets/3D/textures/tiles.jpg";
-// import { GUI } from "dat.gui";
 import * as THREE from "three";
 
 class BubbleGeometry {
