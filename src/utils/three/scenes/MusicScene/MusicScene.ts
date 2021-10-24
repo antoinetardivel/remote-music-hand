@@ -8,6 +8,10 @@ import { WEBGL } from "three/examples/jsm/WebGL";
 import BaseGeometry from "../../geometries/Base.geometry";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import BlobGeometry from "../../geometries/Blob/Blob.geometry";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 
 export type TCanva = HTMLCanvasElement | THREE.OffscreenCanvas | undefined;
 
@@ -33,6 +37,8 @@ export default class MusicScene {
   public blob3: BlobGeometry;
   public blob4: BlobGeometry;
   public blob5: BlobGeometry;
+  public composer: EffectComposer;
+  public renderPass: RenderPass;
 
   constructor() {
     /**
@@ -64,6 +70,7 @@ export default class MusicScene {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.composer = new EffectComposer(this.renderer);
 
     /**
      * Clock
@@ -143,6 +150,15 @@ export default class MusicScene {
     this.scene.add(wall);
 
     this.camera = this.initCamera();
+    this.renderPass = new RenderPass(this.scene, this.camera);
+    this.composer.addPass(this.renderPass);
+    const unrealBloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      2,
+      2,
+      4
+    );
+    this.composer.addPass(unrealBloomPass);
     this.controls = this.initControls();
     this.update();
     this.bindEvents();
@@ -227,6 +243,7 @@ export default class MusicScene {
     this.controls.update();
     this.sky.update(this.water.mesh, this.scene);
     this.renderer.render(this.scene, this.camera);
+    this.composer.render();
   }
   play(blob: number) {
     switch (blob) {

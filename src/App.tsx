@@ -46,6 +46,9 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <header>
+        <img className="logo" src="/images/handify.png" alt="logo" />
+      </header>
       <MusicCanvas blob={blob} />
       <HandDetection
         setPosition={setPosition}
