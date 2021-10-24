@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import MusicScene from "../../utils/three/scenes/MusicScene/MusicScene";
+import MusicScene from "../../three/scenes/MusicScene/MusicScene";
 interface ImusicCanvas {
   blob: number;
 }

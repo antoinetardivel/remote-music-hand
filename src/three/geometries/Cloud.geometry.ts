@@ -1,9 +1,6 @@
 import * as THREE from "three";
 import { ImprovedNoise } from "three/examples/jsm/math/ImprovedNoise";
 import { WEBGL } from "three/examples/jsm/WebGL.js";
-// import vertexShader from "../shaders/cloud/vertex.glsl";
-// import fragmentShader from "../shaders/cloud/fragments.glsl";
-// import { GUI } from "dat.gui";
 
 class CloudGeometry {
   public material: THREE.RawShaderMaterial;
@@ -82,11 +79,6 @@ class CloudGeometry {
     this.mesh.scale.z = 50;
     this.mesh.rotation.x = Math.PI / 2;
 
-    // const gui = new GUI();
-    // gui.add(this.parameters, "threshold", 0, 1, 0.01).onChange(this.update);
-    // gui.add(this.parameters, "opacity", 0, 1, 0.01).onChange(this.update);
-    // gui.add(this.parameters, "range", 0, 1, 0.01).onChange(this.update);
-    // gui.add(this.parameters, "steps", 0, 200, 1).onChange(this.update);
     //@ts-ignore
     this.mesh.material.uniforms.threshold.value = this.parameters.threshold;
     //@ts-ignore

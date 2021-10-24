@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { Water } from "three/examples/jsm/objects/Water";
-import waternormals from "../../../assets/3D/textures/waternormals.jpg";
+import waternormals from "../../assets/3D/textures/waternormals.jpg";
 
 class WaterGeometry {
   public scene: THREE.Scene;

@@ -22,7 +22,7 @@ const WaveLettersAppear: React.FC<IwaveLettersAppear> = ({ text }) => {
         duration: 0.7,
       });
     }, 100 * text.length);
-  }, []);
+  }, [text.length]);
   if (letters.length < text.length) return null;
   return (
     <div className="waveLettersAppear">

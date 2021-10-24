@@ -10,12 +10,13 @@ import Home from "./layouts/home/home.layout";
 const App: React.FC = () => {
   const [position, setPosition] = useState<string | null>(null);
   const [muted, setMuted] = useState<boolean>(false);
+  const [started, setStarted] = useState<boolean>(false);
   const [positionDebouced] = useDebounce(position, 300);
   const [blob, setBlob] = useState<number>(0);
   const [oscillator, setOscillator] = useState<Oscillator | null>(null);
 
   useEffect(() => {
-    if (oscillator) {
+    if (oscillator && started) {
       if (!muted) {
         if (positionDebouced === "closed") {
           oscillator.mute();
@@ -50,7 +51,7 @@ const App: React.FC = () => {
       <header>
         <img className="logo" src="/images/handify.png" alt="logo" />
       </header>
-      <Home />
+      <Home setStarted={setStarted} />
       <MusicCanvas blob={blob} />
       <HandDetection
         setPosition={setPosition}

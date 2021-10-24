@@ -8,6 +8,7 @@ import { WEBGL } from "three/examples/jsm/WebGL";
 import BaseGeometry from "../../geometries/Base.geometry";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import BlobGeometry from "../../geometries/Blob/Blob.geometry";
+import WallGeometry from "../../geometries/Wall.geometry";
 
 export type TCanva = HTMLCanvasElement | THREE.OffscreenCanvas | undefined;
 
@@ -33,6 +34,9 @@ export default class MusicScene {
   public blob3: BlobGeometry;
   public blob4: BlobGeometry;
   public blob5: BlobGeometry;
+  public wall: WallGeometry;
+  private gltfLoader: GLTFLoader;
+  public textureLoader: THREE.TextureLoader;
 
   constructor() {
     /**
@@ -107,40 +111,11 @@ export default class MusicScene {
     this.blob5 = new BlobGeometry(440, -265, "gold");
     this.scene.add(this.blob5.mesh);
 
-    // this.scene.add(bubble.mesh);
+    this.gltfLoader = new GLTFLoader();
+    this.textureLoader = new THREE.TextureLoader();
 
-    const gltfLoader = new GLTFLoader();
-    const textureLoader = new THREE.TextureLoader();
-    const wall = new THREE.Group();
-
-    const wallMaterial = new THREE.MeshMatcapMaterial();
-    const matcapTextureWall = textureLoader.load("/textures/matcaps/wall.jpg");
-    wallMaterial.matcap = matcapTextureWall;
-
-    gltfLoader.load(
-      "/models/wall.gltf",
-      (gltf) => {
-        while (gltf.scene.children.length) {
-          //@ts-ignore
-          let mesh: THREE.Mesh = gltf.scene.children[0];
-          mesh.traverse((vertice) => {
-            if (mesh.isMesh) {
-              //@ts-ignore
-              vertice.material = wallMaterial;
-            }
-          });
-          wall.add(mesh);
-        }
-      },
-      undefined,
-      (error) => {
-        console.error(error);
-      }
-    );
-    wall.scale.x = 50;
-    wall.scale.y = 50;
-    wall.scale.z = 50;
-    this.scene.add(wall);
+    this.wall = new WallGeometry(this.gltfLoader, this.textureLoader);
+    this.scene.add(this.wall.mesh);
 
     this.camera = this.initCamera();
     this.controls = this.initControls();
@@ -167,9 +142,6 @@ export default class MusicScene {
       this.camera,
       this.container as HTMLElement
     );
-    // controls.maxPolarAngle = Math.PI * 0.495;
-    // controls.minDistance = 40.0;
-    // controls.maxDistance = 200.0;
     controls.enableDamping = true;
     controls.target.set(-73, 54, 75);
     controls.enabled = false;

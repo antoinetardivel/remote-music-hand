@@ -2,8 +2,10 @@ import { useRef } from "react";
 import WaveLettersAppear from "../../components/WaveLettersAppear/WaveLettersAppear.component";
 import gsap, { Power4 } from "gsap";
 import "./home.css";
-interface Ihome {}
-const Home: React.FC<Ihome> = () => {
+interface Ihome {
+  setStarted: (started: boolean) => void;
+}
+const Home: React.FC<Ihome> = ({ setStarted }) => {
   const homeRef = useRef(null);
   const handleStart = () => {
     console.log("handle");
@@ -18,6 +20,7 @@ const Home: React.FC<Ihome> = () => {
       ease: Power4.easeOut,
       duration: 0.7,
     });
+    setStarted(true);
   };
   return (
     <div ref={homeRef} className="homeContainer">
