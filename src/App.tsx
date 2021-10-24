@@ -51,12 +51,12 @@ const App: React.FC = () => {
         <img className="logo" src="/images/handify.png" alt="logo" />
       </header>
       <Home />
-      {/* <MusicCanvas blob={blob} />
+      <MusicCanvas blob={blob} />
       <HandDetection
         setPosition={setPosition}
         setMuted={setMuted}
         muted={muted}
-      /> */}
+      />
     </div>
   );
 };
