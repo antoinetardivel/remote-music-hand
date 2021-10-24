@@ -20,10 +20,10 @@ class SkyGeometry {
     this.mesh = new Sky();
     this.mesh.scale.setScalar(10000);
     this.uniforms = this.mesh.material.uniforms;
-    this.uniforms["turbidity"].value = 10;
-    this.uniforms["rayleigh"].value = 7;
-    this.uniforms["mieCoefficient"].value = 0.003;
-    this.uniforms["mieDirectionalG"].value = 5;
+    this.uniforms["turbidity"].value = 7;
+    this.uniforms["rayleigh"].value = 2;
+    this.uniforms["mieCoefficient"].value = 0.005;
+    this.uniforms["mieDirectionalG"].value = 0.8;
     this.parameters = {
       elevation: 2.5,
       azimuth: 170,
