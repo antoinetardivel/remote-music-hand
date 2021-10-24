@@ -41,6 +41,8 @@
   z-index: 9;
   -webkit-filter: brightness(10) grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: brightness(0.5) grayscale(100%);
+  max-width: 100%;
+  object-fit: cover;
 }
 .textPositionContainer {
   display: flex;
