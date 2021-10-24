@@ -183,15 +183,12 @@ export default class MusicScene {
   }
   defineFov() {
     if (window.innerWidth <= 360) {
-      console.log(104);
       return 104;
     } else if (window.innerWidth >= 1920) {
-      console.log(45);
       return 45;
     } else {
       const pourcentWidht = ((window.innerWidth - 360) * 100) / 1920;
       const deltaFov = ((100 - pourcentWidht) * (104 - 45)) / 100;
-      console.log(45 + deltaFov);
       return 45 + deltaFov;
     }
   }

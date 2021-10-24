@@ -1,0 +1,12 @@
+.waveLettersAppear {
+  height: 40px;
+  max-height: 40px;
+  /* overflow: hidden; */
+  display: flex;
+  white-space: break-spaces;
+}
+.waveLetterAppear {
+  margin: 0;
+  opacity: 0;
+  margin-top: 40px;
+}

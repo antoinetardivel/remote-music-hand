@@ -5,6 +5,7 @@ import { config } from "./config/config";
 import { Oscillator } from "./utils/Oscillator";
 import { useDebounce } from "use-debounce";
 import MusicCanvas from "./components/MusicCanvas/MusicCanvas.component";
+import Home from "./layouts/home/home.layout";
 
 const App: React.FC = () => {
   const [position, setPosition] = useState<string | null>(null);
@@ -49,12 +50,13 @@ const App: React.FC = () => {
       <header>
         <img className="logo" src="/images/handify.png" alt="logo" />
       </header>
-      <MusicCanvas blob={blob} />
+      <Home />
+      {/* <MusicCanvas blob={blob} />
       <HandDetection
         setPosition={setPosition}
         setMuted={setMuted}
         muted={muted}
-      />
+      /> */}
     </div>
   );
 };

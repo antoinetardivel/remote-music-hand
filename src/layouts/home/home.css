@@ -1,0 +1,33 @@
+.homeContainer {
+  position: fixed;
+  z-index: 99;
+  height: 100vh;
+  width: 100vw;
+  background-color: #b79d8d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.homeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: 200;
+  color: #edddc1;
+  font-family: "Lexend Deca";
+  cursor: pointer;
+}
+.credits {
+  margin: 0;
+  margin-bottom: 30px;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 300;
+  color: #edddc1;
+  font-family: "Lexend Deca";
+}
+.creditsLink {
+  color: #edddc1;
+}
