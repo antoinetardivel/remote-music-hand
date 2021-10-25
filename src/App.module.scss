@@ -16,6 +16,10 @@ header {
   max-width: 70vw;
   -webkit-animation: fadeIn 400ms ease-in-out 0.5s both;
   animation: fadeIn 400ms ease-in-out 0.5s both;
+  @media screen and (max-width: 550px) {
+    width: 200px;
+    max-width: 70vw;
+  }
 }
 .freeSpace {
   height: 52px;
