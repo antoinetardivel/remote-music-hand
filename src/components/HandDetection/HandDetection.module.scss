@@ -47,7 +47,9 @@
 .textPositionContainer {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: center;
+  color: #edddc1;
+  z-index: 9;
 }
 .textPosition {
   color: white;
