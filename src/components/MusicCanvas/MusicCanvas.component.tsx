@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MusicScene from "../../three/scenes/MusicScene/MusicScene";
+import "./MusicCanvas.module.scss";
 interface ImusicCanvas {
   blob: number;
 }

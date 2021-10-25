@@ -4,7 +4,7 @@ import MusicCanvas from "../../components/MusicCanvas/MusicCanvas.component";
 import { useDebounce } from "use-debounce";
 import { Oscillator } from "../../utils/Oscillator";
 import { config } from "../../config/config";
-import "./Main.css";
+import styles from "./Main.module.scss";
 
 interface Imain {
   started: boolean;
@@ -55,7 +55,7 @@ const Main: React.FC<Imain> = ({ started, setHintOpened }) => {
         setMuted={setMuted}
         muted={muted}
       />
-      <button className="helpButton" onClick={() => setHintOpened(true)}>
+      <button className={styles.helpButton} onClick={() => setHintOpened(true)}>
         Help
       </button>
     </>

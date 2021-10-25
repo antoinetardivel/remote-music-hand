@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import WaveLettersAppear from "../../components/WaveLettersAppear/WaveLettersAppear.component";
 import gsap, { Power4 } from "gsap";
-import "./Home.css";
+import styles from "./Home.module.scss";
 interface Ihome {
   setStarted: (started: boolean) => void;
 }
@@ -23,18 +23,18 @@ const Home: React.FC<Ihome> = ({ setStarted }) => {
     setStarted(true);
   };
   return (
-    <div ref={homeRef} className="homeContainer">
-      <span className="freeSpace"></span>
-      <button className="homeButton" onClick={handleStart}>
+    <div ref={homeRef} className={styles.homeContainer}>
+      <span className={styles.freeSpace}></span>
+      <button className={styles.homeButton} onClick={handleStart}>
         <WaveLettersAppear text={"Start experience"} />
       </button>
-      <p className="credits">
+      <p className={styles.credits}>
         Bootstrapped by{" "}
         <a
           rel="noreferrer"
           href="https://antoinetardivel.com"
           target="_blank"
-          className="creditsLink"
+          className={styles.creditsLink}
         >
           Antoine Tardivel
         </a>

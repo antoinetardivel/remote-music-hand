@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap, { Back, Power4 } from "gsap";
-import "./WaveLettersAppear.css";
+import "./WaveLettersAppear.scss";
 interface IwaveLettersAppear {
   text: string;
 }

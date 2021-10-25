@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import "@tensorflow/tfjs-backend-webgl";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-import "./HandDetection.css";
+import styles from "./HandDetection.module.scss";
 import iconMute from "../../assets/icons/volume-mute.svg";
 import iconSoundOn from "../../assets/icons/volume-on.svg";
 
@@ -104,14 +104,14 @@ const HandDetection: React.FC<IhandDetection> = ({
   }, [webcamRef, setPosition]);
 
   return (
-    <div className="handDetection">
+    <div className={styles.handDetection}>
       <div
-        className="videoContainer"
+        className={styles.videoContainer}
         style={{ height: config.video.height, width: "200px" }}
       >
         <Webcam
           ref={webcamRef}
-          className="video"
+          className={styles.video}
           style={{
             width: config.video.width,
             height: config.video.height,
@@ -120,20 +120,20 @@ const HandDetection: React.FC<IhandDetection> = ({
 
         <canvas
           ref={canvasRef}
-          className="handCanvas"
+          className={styles.handCanvas}
           style={{
             width: config.video.width,
             height: config.video.height,
           }}
         />
         <div
-          className="textPositionContainer"
+          className={styles.textPositionContainer}
           style={{
             width: config.video.width,
             height: config.video.height,
           }}
         >
-          <p className="textPosition">
+          <p className={styles.textPositionstyles}>
             {textPosition === "closed"
               ? "mute"
               : textPosition === "opened"
@@ -143,7 +143,7 @@ const HandDetection: React.FC<IhandDetection> = ({
           </p>
         </div>
       </div>
-      <button className="muteButton" onClick={() => setMuted(!muted)}>
+      <button className={styles.muteButton} onClick={() => setMuted(!muted)}>
         <img src={muted ? iconMute : iconSoundOn} alt="Mute button" />
       </button>
     </div>

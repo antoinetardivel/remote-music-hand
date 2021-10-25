@@ -57,7 +57,10 @@
   "devDependencies": {
     "@types/dat.gui": "^0.7.7",
     "@types/gsap": "^3.0.0",
+    "@types/node-sass": "^4.11.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "node-sass": "^4.14.1",
+    "stylelint": "^14.0.0"
   }
 }

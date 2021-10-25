@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import styles from "./App.module.scss";
 import Hint from "./layouts/Hint/Hint.layout";
 import Home from "./layouts/Home/Home.layout";
 import Main from "./layouts/Main/Main.layout";
@@ -9,9 +9,9 @@ const App: React.FC = () => {
   const [hintOpened, setHintOpened] = useState<boolean>(false);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <header>
-        <img className="logo" src="/images/handify.png" alt="logo" />
+        <img className={styles.logo} src="/images/handify.png" alt="logo" />
       </header>
       <Home setStarted={setStarted} />
       <Hint hintOpened={hintOpened} setHintOpened={setHintOpened} />

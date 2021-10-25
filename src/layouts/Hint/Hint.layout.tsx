@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap, { Power4 } from "gsap";
-import "./Hint.css";
+import styles from "./Hint.module.scss";
 import WaveLettersAppear from "../../components/WaveLettersAppear/WaveLettersAppear.component";
 interface Ihint {
   hintOpened: boolean;
@@ -42,9 +42,9 @@ const Hint: React.FC<Ihint> = ({ hintOpened, setHintOpened }) => {
   }, [hintOpened, setHintOpened]);
 
   return (
-    <div ref={hintRef} className="hintContainer">
-      <span className="freeSpace"></span>
-      <div className="hintText">
+    <div ref={hintRef} className={styles.hintContainer}>
+      <span className={styles.freeSpace}></span>
+      <div className={styles.hintText}>
         <p>
           Handify is an interface for creating sounds based on hand gestures.
           There is one note per finger lowered. You have to lower your fingers
@@ -61,17 +61,17 @@ const Hint: React.FC<Ihint> = ({ hintOpened, setHintOpened }) => {
           It's up to you! One finger down corresponds to one note. For the
           moment the site only detects one note by one note.
         </p>
-        <button className="hintCloseButton" onClick={handleHide}>
+        <button className={styles.hintCloseButton} onClick={handleHide}>
           <WaveLettersAppear text={"Back to experience"} />
         </button>
       </div>
-      <p className="credits">
+      <p className={styles.credits}>
         Bootstrapped by{" "}
         <a
           rel="noreferrer"
           href="https://antoinetardivel.com"
           target="_blank"
-          className="creditsLink"
+          className={styles.creditsLink}
         >
           Antoine Tardivel
         </a>
