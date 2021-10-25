@@ -13,12 +13,12 @@ const Home: React.FC<Ihome> = ({ setStarted }) => {
     timeline.to(homeRef.current, {
       css: { opacity: 0 },
       ease: Power4.easeOut,
-      duration: 0.1,
+      duration: 0.6,
     });
     timeline.to(homeRef.current, {
       css: { display: "none" },
       ease: Power4.easeOut,
-      duration: 0.6,
+      duration: 0.1,
     });
     setStarted(true);
   };
