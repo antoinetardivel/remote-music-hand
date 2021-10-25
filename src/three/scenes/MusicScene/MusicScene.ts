@@ -9,6 +9,7 @@ import BaseGeometry from "../../geometries/Base.geometry";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import BlobGeometry from "../../geometries/Blob/Blob.geometry";
 import WallGeometry from "../../geometries/Wall.geometry";
+import Stats from "three/examples/jsm/libs/stats.module.js";
 
 export type TCanva = HTMLCanvasElement | THREE.OffscreenCanvas | undefined;
 
@@ -37,6 +38,7 @@ export default class MusicScene {
   public wall: WallGeometry;
   private gltfLoader: GLTFLoader;
   public textureLoader: THREE.TextureLoader;
+  public stats: Stats;
 
   constructor() {
     /**
@@ -121,6 +123,11 @@ export default class MusicScene {
     this.controls = this.initControls();
     this.update();
     this.bindEvents();
+
+    this.stats = new (Stats as any)();
+    // const canvasContainer = document.createElement("div");
+    // document.body.appendChild(canvasContainer);
+    // canvasContainer.appendChild(this.stats.dom);
   }
 
   on(event: any, callback: any) {
@@ -177,6 +184,7 @@ export default class MusicScene {
 
   update() {
     requestAnimationFrame(this.update.bind(this));
+    if (this.stats) this.stats.update();
 
     this.elapsedTime = this.clock.getElapsedTime();
     this.water.mesh.material.uniforms["time"].value += 1.0 / 80.0;
