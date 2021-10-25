@@ -7,6 +7,7 @@ To begin, allow the page to access the camera and place your hand your hand in f
 Think to spread your fingers fingers apart to facilitate detection.
 
 It's up to you! One finger down corresponds to one note. For the moment the site only detects one note by one note.
+
 ![screenshot](screenshot.png)
 
 ## More information
