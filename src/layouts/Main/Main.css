@@ -1,0 +1,23 @@
+.helpButton {
+  z-index: 11;
+  top: 30px;
+  left: 30px;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  border: none;
+  border-radius: 50%;
+  background-color: #f5fdfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  font-size: 14px;
+  font-weight: 300;
+  color: #312e27;
+  font-family: "Lexend Deca";
+}
+.helpButton:hover {
+  background-color: #92beb3;
+}

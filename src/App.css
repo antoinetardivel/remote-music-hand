@@ -18,6 +18,9 @@ header {
   -webkit-animation: fadeIn 400ms ease-in-out 0.5s both;
   animation: fadeIn 400ms ease-in-out 0.5s both;
 }
+.freeSpace {
+  height: 52px;
+}
 
 @-webkit-keyframes fadeIn {
   from {

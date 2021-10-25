@@ -5,6 +5,7 @@
   display: flex;
   white-space: break-spaces;
   position: relative;
+  margin-bottom: 7px;
 }
 .textUnderline {
   opacity: 0;

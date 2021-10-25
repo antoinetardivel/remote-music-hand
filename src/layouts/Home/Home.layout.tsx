@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import WaveLettersAppear from "../../components/WaveLettersAppear/WaveLettersAppear.component";
 import gsap, { Power4 } from "gsap";
-import "./home.css";
+import "./Home.css";
 interface Ihome {
   setStarted: (started: boolean) => void;
 }
@@ -13,18 +13,18 @@ const Home: React.FC<Ihome> = ({ setStarted }) => {
     timeline.to(homeRef.current, {
       css: { opacity: 0 },
       ease: Power4.easeOut,
-      duration: 0.7,
+      duration: 0.1,
     });
     timeline.to(homeRef.current, {
       css: { display: "none" },
       ease: Power4.easeOut,
-      duration: 0.7,
+      duration: 0.6,
     });
     setStarted(true);
   };
   return (
     <div ref={homeRef} className="homeContainer">
-      <span></span>
+      <span className="freeSpace"></span>
       <button className="homeButton" onClick={handleStart}>
         <WaveLettersAppear text={"Start experience"} />
       </button>
