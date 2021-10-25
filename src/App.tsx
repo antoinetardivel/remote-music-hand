@@ -38,7 +38,7 @@ const App: React.FC = () => {
         oscillator.mute();
       }
     }
-  }, [positionDebouced, oscillator, muted]);
+  }, [positionDebouced, oscillator, muted, started]);
 
   useEffect(() => {
     const newAudioContext = new (window.AudioContext ||
