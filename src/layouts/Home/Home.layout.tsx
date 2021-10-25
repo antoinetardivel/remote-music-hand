@@ -8,7 +8,6 @@ interface Ihome {
 const Home: React.FC<Ihome> = ({ setStarted }) => {
   const homeRef = useRef(null);
   const handleStart = () => {
-    console.log("handle");
     const timeline = gsap.timeline();
     timeline.to(homeRef.current, {
       css: { opacity: 0 },

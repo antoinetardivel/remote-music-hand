@@ -60,7 +60,6 @@ const HandDetection: React.FC<IhandDetection> = ({
 
         // Make Detections
         const hand = await net.estimateHands(webcam.video, true);
-        // console.log(hand);
 
         if (hand.length > 0) {
           const GE = new fp.GestureEstimator([
@@ -80,7 +79,6 @@ const HandDetection: React.FC<IhandDetection> = ({
             const maxConfidence = confidence.indexOf(
               Math.max.apply(null, confidence)
             );
-            // console.log(gesture.gestures[maxConfidence].name);
             setPosition(gesture.gestures[maxConfidence].name);
             setTextPosition(gesture.gestures[maxConfidence].name);
           }
