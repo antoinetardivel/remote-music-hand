@@ -98,6 +98,7 @@ class BlobGeometry {
     this.mesh.position.y = 150;
     this.mesh.position.z = z;
     this.mesh.position.x = x;
+    this.mesh.frustumCulled = true;
 
     this.uniforms.uTime.value = 0;
     this.uniforms.uSpeed.value = this.parameters.speed;

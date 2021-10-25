@@ -34,6 +34,7 @@ class SkyGeometry {
     this.theta = THREE.MathUtils.degToRad(this.parameters.azimuth);
     this.sun.setFromSphericalCoords(1, this.phi, this.theta);
     this.mesh.material.uniforms["sunPosition"].value.copy(this.sun);
+    this.mesh.frustumCulled = true;
   }
 
   update(water: Water, scene: THREE.Scene) {

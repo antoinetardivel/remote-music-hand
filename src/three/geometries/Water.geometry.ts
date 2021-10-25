@@ -27,6 +27,7 @@ class WaterGeometry {
       fog: this.scene.fog !== undefined,
     });
     this.mesh.rotation.x = -Math.PI / 2;
+    this.mesh.frustumCulled = true;
   }
 }
 

@@ -29,6 +29,7 @@ class BaseGeometry {
     this.material = new THREE.MeshBasicMaterial({ map: this.texture });
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.position.y = 15;
+    this.mesh.frustumCulled = true;
     this.parameters = {
       position: {
         x: x,

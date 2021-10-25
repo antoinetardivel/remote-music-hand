@@ -36,6 +36,7 @@ class WallGeometry {
     this.mesh.scale.x = 50;
     this.mesh.scale.y = 50;
     this.mesh.scale.z = 50;
+    this.mesh.frustumCulled = true;
   }
   update() {}
 }

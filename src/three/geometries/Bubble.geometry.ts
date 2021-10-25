@@ -18,6 +18,7 @@ class BubbleGeometry {
     this.mesh.position.y = 150;
     this.mesh.position.z = 400;
     this.mesh.position.x = 0;
+    this.mesh.frustumCulled = true;
   }
   update(clock: any) {}
 }

@@ -78,6 +78,7 @@ class CloudGeometry {
     this.mesh.scale.y = 50;
     this.mesh.scale.z = 50;
     this.mesh.rotation.x = Math.PI / 2;
+    this.mesh.frustumCulled = true;
 
     //@ts-ignore
     this.mesh.material.uniforms.threshold.value = this.parameters.threshold;
